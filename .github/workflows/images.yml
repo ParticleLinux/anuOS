@@ -11,6 +11,11 @@ jobs:
   build_images:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup dependencies
+        run: |
+          sudo apt-get -q update
+          sudo apt-get -yqq --no-install-recommends install \
+            dnf
       - name: Setup mkosi
         uses: systemd/mkosi@v13
       - name: Cache Primes
