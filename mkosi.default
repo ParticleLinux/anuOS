@@ -1,0 +1,9 @@
+[Distribution]
+Distribution=arch
+
+[Output]
+Format=gpt_btrfs
+Bootable=yes
+
+[Packages]
+Packages=podman

@@ -1,0 +1,22 @@
+[Distribution]
+Distribution=arch
+
+[Output]
+ImageId=initrd
+Format=cpio
+ManifestFormat=
+Compress=zstd
+
+[Content]
+BasePackages=conditional
+
+Packages=
+        bash
+	less
+        lvm2
+        systemd
+
+RemoveFiles=
+        /lib/systemd/catalog
+        /etc/udev/hwdb.d
+        /lib/udev/hwdb.d

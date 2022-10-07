@@ -1,0 +1,25 @@
+name: Build anuOS images
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup mkosi
+        uses: systemd/mkosi@v13
+      - name: Cache Primes
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: mkosi.cache
+          key: ${{ runner.os }}-os
+      - name: Build OS image
+        run: sudo $(which mkosi) -i
+      - name: Build initrd image
+        run: sudo $(which) mkosi --config initrd.mkosi
